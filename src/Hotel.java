@@ -99,6 +99,9 @@ public class Hotel {
                 for (i = 0; i <= 9; i++) {
                     for (int j = 1; j <= 2; j++) {
                         if (!Rooms[i][j].equals("NA")) {
+                            String startDate1 = Rooms[i][1];
+                            String endDate2 = Rooms[i][2];
+                            check(Rooms, startDate1, endDate2);
                             LocalDate startDate = LocalDate.parse(Rooms[i][1], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
                             LocalDate endDate = LocalDate.parse(Rooms[i][2], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
                             boolean isAfter = endDate.isAfter(startDate);
@@ -136,6 +139,7 @@ public class Hotel {
                     Rooms[i][j] = String.valueOf(scanner.next());
                 }
             }
+            System.out.println("Update was created!");
 
         } else {
             System.out.println("Wrong choice!");
@@ -274,7 +278,8 @@ public class Hotel {
                     readText();
                 }
 
-            }System.out.println();
+            }
+            System.out.println();
         }
 
 //    public static void CheckDate2(String[][] Rooms, String date) throws IOException {
@@ -305,4 +310,19 @@ public class Hotel {
 //            registrationInRoom(Rooms);
 //        }
     }
-}
+
+
+         public static void check(String [][]Rooms, String startDate1, String endDate2) throws IOException {
+            boolean isDate = false;
+
+            String datePattern = "\\d{1,2}.\\d{1,2}.\\d{4}";
+
+            isDate = startDate1.matches(datePattern);
+            isDate = endDate2.matches(datePattern);
+
+           if (!isDate){
+               System.out.println("Wrong Date!");
+               registrationInRoom(Rooms);
+           }
+        }
+    }
