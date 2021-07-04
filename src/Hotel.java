@@ -176,7 +176,7 @@ public class Hotel {
 
         } else {
             System.out.println("Wrong choice. Please enter room ID from 101 to 110:");
-            registrationInRoom(Rooms);
+            releaseRoom(Rooms);
         }
     }
 
@@ -312,17 +312,17 @@ public class Hotel {
     }
 
 
-         public static void check(String [][]Rooms, String startDate1, String endDate2) throws IOException {
-            boolean isDate = false;
+    public static void check(String[][] Rooms, String startDate1, String endDate2) throws IOException {
+        boolean isDate = false;
 
-            String datePattern = "\\d{1,2}.\\d{1,2}.\\d{4}";
+        String datePattern = "\\d{1,2}.\\d{1,2}.\\d{4}";
 
-            isDate = startDate1.matches(datePattern);
-            isDate = endDate2.matches(datePattern);
+        isDate = startDate1.matches(datePattern);
+        isDate = endDate2.matches(datePattern);
 
-           if (!isDate){
-               System.out.println("Wrong Date!");
-               registrationInRoom(Rooms);
-           }
+        if (!isDate) {
+            System.out.println("Wrong Date!");
+            registrationInRoom(Rooms);
         }
     }
+}
